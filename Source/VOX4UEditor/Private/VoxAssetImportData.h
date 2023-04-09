@@ -26,7 +26,7 @@ public:
 	uint32 bImportXYCenter : 1;
 
 	UPROPERTY(EditAnywhere, Category = Generic)
-	float Scale;
+	float VoxelSize;
 
 public:
 

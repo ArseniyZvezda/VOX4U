@@ -11,9 +11,9 @@ UVoxImportOption::UVoxImportOption()
 	, bImportXForward(true)
 	, bImportXYCenter(true)
 	, bImportMaterial(true)
-	, Scale(1.f)
+	, VoxelSize(10.f)
 {
-	BuildSettings.BuildScale3D = FVector(Scale);
+	BuildSettings.BuildScale3D = FVector(VoxelSize);
 }
 
 bool UVoxImportOption::GetImportOption(bool& bOutImportAll)
@@ -34,7 +34,7 @@ bool UVoxImportOption::GetImportOption(bool& bOutImportAll)
 	FSlateApplication::Get().AddModalWindow(Window, ParentWindow, false);
 	SaveConfig();
 
-	BuildSettings.BuildScale3D = FVector(Scale);
+	BuildSettings.BuildScale3D = FVector(VoxelSize);
 	bOutImportAll = VoxOptionWidget->ShouldImportAll();
 
 	return VoxOptionWidget->ShouldImport();

@@ -33,7 +33,17 @@ bool MonotoneMesh::CreateRawMesh(FRawMesh& OutRawMesh, const UVoxImportOption* I
 	if (ImportOption->bImportXYCenter) {
 		auto Offset = FVector3f((float)Vox->Size.X * 0.5f, (float)Vox->Size.Y * 0.5f, 0.f);
 		for (int32 i = 0; i < OutRawMesh.VertexPositions.Num(); ++i) {
-			OutRawMesh.VertexPositions[i] -= Offset;
+			OutRawMesh.VertexPositions[i] = (OutRawMesh.VertexPositions[i] - Offset) * ImportOption->VoxelSize;
+		}
+	}
+	else
+	{
+		if (ImportOption->VoxelSize != 1)
+		{
+			for (int32 i = 0; i < OutRawMesh.VertexPositions.Num(); ++i)
+			{
+				OutRawMesh.VertexPositions[i] *= ImportOption->VoxelSize;
+			}
 		}
 	}
 	OutRawMesh.CompactMaterialIndices();

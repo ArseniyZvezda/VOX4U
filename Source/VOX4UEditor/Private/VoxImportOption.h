@@ -38,8 +38,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = Generic)
 	uint32 bImportMaterial : 1;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Generic)
-	float Scale;
+	UPROPERTY(EditAnywhere, Category = Generic)
+	float VoxelSize;
 
 public:
 

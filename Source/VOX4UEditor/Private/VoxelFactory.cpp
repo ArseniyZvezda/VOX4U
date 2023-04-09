@@ -259,7 +259,6 @@ UStaticMesh* UVoxelFactory::BuildStaticMesh(UStaticMesh* OutStaticMesh, FRawMesh
 {
 	check(OutStaticMesh);
 	FStaticMeshSourceModel& StaticMeshSourceModel = OutStaticMesh->AddSourceModel();
-	StaticMeshSourceModel.BuildSettings = ImportOption->GetBuildSettings();
 	StaticMeshSourceModel.RawMeshBulkData->SaveRawMesh(RawMesh);
 	TArray<FText> Errors;
 	OutStaticMesh->Build(false, &Errors);

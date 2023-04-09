@@ -39,6 +39,9 @@ public:
 	uint32 bImportMaterial : 1;
 
 	UPROPERTY(EditAnywhere, Category = Generic)
+	uint32 bCreateTextureMaterialRow : 1;
+	
+	UPROPERTY(EditAnywhere, Category = Generic)
 	float VoxelSize;
 
 public:

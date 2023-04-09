@@ -346,7 +346,16 @@ bool FVox::CreateTexture(UTexture2D* const& OutTexture, UVoxImportOption* Import
 	OutTexture->CompressionSettings = TextureCompressionSettings::TC_Default;
 	OutTexture->MipGenSettings = TextureMipGenSettings::TMGS_NoMipmaps;
 	OutTexture->DeferCompression = true;
-	OutTexture->Source.Init(256, 1, 1, 1, TSF_BGRA8, (const uint8*)Palette.GetData());
+	if (ImportOption->bCreateTextureMaterialRow)
+	{
+		TArray<FColor> TextureData = Palette;
+		//TextureData.Append(Materials)
+		OutTexture->Source.Init(256, 2, 1, 1, TSF_BGRA8, (const uint8*)Palette.GetData());
+	}
+	else
+	{
+		OutTexture->Source.Init(256, 1, 1, 1, TSF_BGRA8, (const uint8*)Palette.GetData());
+	}
 	OutTexture->UpdateResource();
 	OutTexture->PostEditChange();
 	return true;
